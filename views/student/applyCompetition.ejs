@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-xl">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Team Registration Form</h2>
+    <form action="/register/competition/team/<%= id %>" method="POST" class="space-y-4">
+
+      <div>
+        <label class="block font-medium mb-1">Name</label>
+        <input name="name" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Team Name</label>
+        <input name="teamName" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Team Size</label>
+        <input name="teamSize" type="number" min="1" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">College</label>
+        <input name="collegeName" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Course</label>
+        <input name="course" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Department</label>
+        <input name="department" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Email</label>
+        <input name="email" type="email" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Phone Number</label>
+        <input name="phoneNumber" type="tel" required pattern="[0-9]{10}" placeholder="e.g. 9876543210" class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Register Team</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Applications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-teal-100 min-h-screen p-6 font-sans">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">Applications for This Post</h1>
+
+    <% if (applications.length === 0) { %>
+      <div class="text-center text-gray-500">No applications yet.</div>
+    <% } else { %>
+      <div class="space-y-6">
+        <% applications.forEach(app => { %>
+          <div class="bg-white rounded-2xl shadow-md p-6 opacity-0 app-card">
+            <div class="mb-2">
+              <span class="font-semibold text-teal-600">Applicant:</span>
+              <%= app.applicant.name || app.applicant.email %>
+            </div>
+            <div class="mb-2">
+              <span class="font-semibold text-teal-600">Message:</span>
+              <%= app.message %>
+            </div>
+            <div class="text-sm text-gray-500">
+              Applied At: <%= app.appliedAt.toLocaleString() %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+
+  <script>
+    gsap.to(".app-card", {
+      opacity: 1,
+      y: -10,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+  </script>
+</body>
+</html>

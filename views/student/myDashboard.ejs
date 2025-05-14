@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+      <h1 class="text-2xl font-semibold">Student Dashboard</h1>
+      <div class="flex items-center gap-4">
+        <span class="font-medium">John Doe</span>
+        <img src="https://via.placeholder.com/40" class="rounded-full w-10 h-10" alt="Profile">
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-6 flex flex-col gap-6">
+      <!-- Welcome Box -->
+      <div class="bg-white rounded-xl shadow p-6">
+        <h2 class="text-xl font-semibold mb-2">Welcome, <%= currUser.name %></h2>
+        <p><%= currUser.email %></p>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Course Progress -->
+        <a href="/user/show/my/postings">
+            <div class="bg-white rounded-xl shadow p-4">
+          <h3 class="text-lg font-semibold mb-2">My Postings</h3>
+          <div class="w-full bg-gray-200 rounded-full h-4">
+            <div class="bg-blue-600 h-4 rounded-full" style="width: 65%;"></div>
+          </div>
+          <p class="mt-2 text-sm">65% completed</p>
+        </div>
+        </a>
+
+        <a href="/my-competitions">
+          <!-- Upcoming Class -->
+        <div class="bg-white rounded-xl shadow p-4">
+          <h3 class="text-lg font-semibold mb-2">My Organised</h3>
+        </div>
+        </a>
+        
+
+        <!-- Announcements -->
+        <div class="bg-white rounded-xl shadow p-4">
+          <h3 class="text-lg font-semibold mb-2">Announcements</h3>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>Unit test on May 20</li>
+            <li>New video uploaded for Science</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

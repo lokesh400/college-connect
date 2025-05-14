@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Competitions</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4f46e5", secondary: "#6366f1" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9fafb;
+      }
+      .competition-card {
+        transition: all 0.3s ease;
+      }
+      .competition-card:hover {
+        transform: translateY(-4px);
+      }
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        background-color: #fff;
+        border: 2px solid #d1d5db;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+      }
+      input[type="checkbox"]:checked {
+        background-color: #4f46e5;
+        border-color: #4f46e5;
+      }
+      input[type="checkbox"]:checked::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7' /%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-white">
+      <!-- Header -->
+      <header class="bg-white border-b border-gray-100 shadow-sm">
+        <div
+          class="container mx-auto px-4 py-4 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 flex items-center justify-center bg-primary rounded-lg text-white"
+            >
+              <i class="ri-trophy-line ri-lg"></i>
+            </div>
+            <span class="text-xl font-semibold text-gray-800"
+              >CompetitionHub</span
+            >
+          </div>
+          <div class="flex items-center gap-4">
+            <div
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600"
+            >
+              <i class="ri-notification-3-line"></i>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20business%20person%20with%20a%20friendly%20smile%2C%20high%20quality%2C%20professional%20photo%2C%20neutral%20background%2C%20business%20attire&width=100&height=100&seq=user123&orientation=squarish"
+                  alt="User"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <span class="text-sm font-medium text-gray-700"
+                >Alexander Mitchell</span
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="container mx-auto px-4 py-8">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-2xl font-bold text-gray-900">My Competitions</h1>
+          <button
+            class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button flex items-center gap-2 whitespace-nowrap"
+          >
+            <i class="ri-add-line"></i>
+            <span>Create Competition</span>
+          </button>
+        </div>
+
+        <!-- Filters -->
+        <div
+          class="bg-white border border-gray-200 rounded-lg p-4 mb-6 shadow-sm"
+        >
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="relative w-64">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+              >
+                <i class="ri-search-line text-gray-400"></i>
+              </div>
+              <input
+                type="text"
+                placeholder="Search competitions"
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              />
+            </div>
+
+            <div class="relative">
+              <button
+                class="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 bg-white whitespace-nowrap"
+              >
+                <i class="ri-filter-3-line"></i>
+                <span>Status</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+
+            <div class="relative">
+              <button
+                class="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 bg-white whitespace-nowrap"
+              >
+                <i class="ri-calendar-line"></i>
+                <span>Date Range</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+
+            <div class="ml-auto flex items-center gap-3">
+              <span class="text-sm text-gray-500">View:</span>
+              <div class="flex items-center bg-gray-100 rounded-lg p-1">
+                <button class="p-1.5 rounded-lg bg-white shadow-sm">
+                  <i class="ri-layout-grid-line text-primary"></i>
+                </button>
+                <button class="p-1.5 rounded-lg">
+                  <i class="ri-list-check-2 text-gray-500"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+    <% if (competitions.length === 0) { %>
+      <p class="text-center text-gray-500">You haven't created any competitions yet.</p>
+    <% } else { %>
+      <ul class="space-y-6">
+        <% competitions.forEach((competition, index) => { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Competition Card 1 -->
+
+          <a href="/organisor/competition/<%= competition._id %>" class="block">
+            
+
+          <div
+            class="competition-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md"
+          >
+            <div class="h-40 bg-gray-100 relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=competitive%20coding%20challenge%20event%20with%20programmers%20working%20on%20computers%20in%20a%20modern%20tech%20environment%2C%20professional%20event%20photography%2C%20bright%20lighting%2C%20focused%20participants&width=400&height=200&seq=comp1&orientation=landscape"
+                alt="Competition"
+                class="w-full h-full object-cover object-top"
+              />
+              <div
+                class="absolute top-3 right-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full"
+              >
+                Active
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                <%= competition.title %>
+              </h3>
+              <p class="text-sm text-gray-600 mb-4">
+                <%= competition.description %>
+              </p>
+              <div class="flex items-center justify-between text-sm mb-4">
+                <div class="flex items-center gap-1.5 text-gray-500">
+                  <i class="ri-calendar-line"></i>
+                  <span>May 20 - Jun 10, 2025</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                  <i class="ri-user-line"></i>
+                  <span>1,248 participants</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex -space-x-2">
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-white overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20asian%20business%20person%20with%20glasses%2C%20high%20quality%2C%20professional%20photo%2C%20neutral%20background&width=50&height=50&seq=user1&orientation=squarish"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-white overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20african%20american%20business%20person%2C%20high%20quality%2C%20professional%20photo%2C%20neutral%20background&width=50&height=50&seq=user2&orientation=squarish"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="w-8 h-8 rounded-full border-2 border-white overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20caucasian%20business%20person%2C%20high%20quality%2C%20professional%20photo%2C%20neutral%20background&width=50&height=50&seq=user3&orientation=squarish"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-white bg-gray-100 text-xs font-medium text-gray-600"
+                  >
+                    +5
+                  </div>
+                </div>
+                <button
+                  class="text-primary hover:text-primary/80 font-medium text-sm"
+                >
+                  Manage
+                </button>
+              </div>
+            </div>
+          </div>
+                    </a>
+
+     
+    </div>
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+
+  <!-- Competition List -->
+      
+
+     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add hover effect to competition cards
+        const cards = document.querySelectorAll(".competition-card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.classList.add("shadow-md");
+          });
+          card.addEventListener("mouseleave", function () {
+            this.classList.remove("shadow-md");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

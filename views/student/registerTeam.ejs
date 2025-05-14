@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply to Team</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-6">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-center mb-4">Apply to <%= team.teamName %></h1>
+    <form action="/apply/team/<%= competitionId %>/<%= team._id %>" method="POST">
+      <input type="hidden" name="teamId" value="<%= team._id %>">
+      <input type="hidden" name="competitionId" value="<%= competitionId %>">
+
+      <div>
+        <label class="block font-medium mb-1">Name</label>
+        <input name="name" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">College</label>
+        <input name="collegeName" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Course</label>
+        <input name="course" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Department</label>
+        <input name="department" type="text" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Email</label>
+        <input name="email" type="email" required class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Phone Number</label>
+        <input name="phoneNumber" type="tel" required pattern="[0-9]{10}" placeholder="e.g. 9876543210" class="w-full border p-2 rounded focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg">Apply to Join Team</button>
+    </form>
+  </div>
+</body>
+</html>

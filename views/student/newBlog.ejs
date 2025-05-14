@@ -1,0 +1,47 @@
+<form action="/blogs/create" method="POST">
+  <div>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required />
+  </div>
+
+  <div id="content-container">
+    <button type="button" onclick="addHeading()">Add Heading</button>
+    <button type="button" onclick="addParagraph()">Add Paragraph</button>
+    <button type="button" onclick="addImage()">Add Image</button>
+    <button type="button" onclick="addImportantWord()">Mark Important Word</button>
+  </div>
+
+  <div>
+    <label for="authorId">Author ID</label>
+    <input type="text" id="authorId" name="authorId" required />
+  </div>
+
+  <button type="submit">Create Blog</button>
+</form>
+
+<script>
+  // Functions to dynamically add content to the form
+  function addHeading() {
+    const contentContainer = document.getElementById('content-container');
+    const headingField = `<div><label>Heading Text</label><input type="text" name="content[heading][text]" required /></div>`;
+    contentContainer.insertAdjacentHTML('beforeend', headingField);
+  }
+
+  function addParagraph() {
+    const contentContainer = document.getElementById('content-container');
+    const paragraphField = `<div><label>Paragraph Text</label><textarea name="content[paragraph][text]" required></textarea></div>`;
+    contentContainer.insertAdjacentHTML('beforeend', paragraphField);
+  }
+
+  function addImage() {
+    const contentContainer = document.getElementById('content-container');
+    const imageField = `<div><label>Image URL</label><input type="text" name="content[image][url]" required /></div>`;
+    contentContainer.insertAdjacentHTML('beforeend', imageField);
+  }
+
+  function addImportantWord() {
+    const contentContainer = document.getElementById('content-container');
+    const importantWordField = `<div><label>Important Word</label><input type="text" name="content[important][text]" required /></div>`;
+    contentContainer.insertAdjacentHTML('beforeend', importantWordField);
+  }
+</script>

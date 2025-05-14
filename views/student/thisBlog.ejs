@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= blog.title %> | My Blog</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+    <!-- Framer Motion CDN -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <div class="max-w-4xl mx-auto px-4 py-10">
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-extrabold mb-2"><%= blog.title %></h1>
+        <p class="text-gray-500 text-sm">By <%= blog.author.name %> • <%= blog.date %></p>
+      </div>
+
+      <!-- Image -->
+      <% if (blog.imageUrl) { %>
+        <div class="overflow-hidden rounded-xl shadow-lg mb-8">
+          <img src="<%= blog.imageUrl %>" alt="Blog image" class="w-full object-cover max-h-[400px]" />
+        </div>
+      <% } %>
+
+      <!-- Content -->
+      <div class="prose lg:prose-lg max-w-none space-y-6">
+        <% blog.content.forEach(function(paragraph, index) { %>
+          <p class="<%= index % 2 === 1 ? 'mb-8' : 'mb-4' %>"><%= paragraph %></p>
+        <% }); %>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-12 text-center">
+        <a href="/blog" class="inline-block px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300">
+          ← Back to Blog
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

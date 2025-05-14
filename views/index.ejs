@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechEduHub - Where Academia Meets Innovation</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#4f46e5", secondary: "#6366f1" },
+                    borderRadius: {
+                        none: "0px",
+                        sm: "4px",
+                        DEFAULT: "8px",
+                        md: "12px",
+                        lg: "16px",
+                        xl: "20px",
+                        "2xl": "24px",
+                        "3xl": "32px",
+                        full: "9999px",
+                        button: "8px",
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <%- include('components/navbar.ejs') %>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section relative min-h-[85vh] flex items-center">
+       <%- include('components/hero.ejs') %>
+    </section>
+
+    <section class="bg-white py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-extrabold text-gray-900">Unlock <span class="text-blue-600">Your Career</span></h2>
+      <p class="mt-2 text-lg text-gray-600">
+        Explore opportunities from across the globe to grow, showcase skills, gain CV points & get hired by your dream company.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Internships -->
+      <div class="bg-green-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-green-800">Internships</h3>
+        <p class="text-sm text-green-700 mt-1">Gain Practical Experience</p>
+      </div>
+
+      <!-- Mentorships -->
+      <div class="bg-orange-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-orange-800">Mentorships</h3>
+        <p class="text-sm text-orange-700 mt-1">Guidance from Top Mentors</p>
+      </div>
+
+      <!-- Jobs -->
+      <div class="bg-blue-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-blue-800">Jobs</h3>
+        <p class="text-sm text-blue-700 mt-1">Explore Diverse Careers</p>
+      </div>
+
+      <!-- Practice -->
+      <div class="bg-purple-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-purple-800">Practice</h3>
+        <p class="text-sm text-purple-700 mt-1">Refine Skills Daily</p>
+      </div>
+
+      <!-- Competitions -->
+      <div class="bg-yellow-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-yellow-800">Competitions</h3>
+        <p class="text-sm text-yellow-700 mt-1">Battle for Excellence</p>
+      </div>
+
+      <!-- More -->
+      <div class="bg-pink-100 p-6 rounded-2xl shadow hover:scale-[1.02] transition transform duration-300 cursor-pointer">
+        <h3 class="text-lg font-semibold text-pink-800">More</h3>
+        <p class="text-sm text-pink-700 mt-1">Explore Additional Features</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <div class="mt-10 flex items-center space-x-6">
+        <div class="flex items-center">
+            <div class="flex -space-x-2">
+                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20asian%20woman%20with%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123458&orientation=squarish"
+                    alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20african%20american%20man%20with%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123459&orientation=squarish"
+                    alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20caucasian%20woman%20with%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123460&orientation=squarish"
+                    alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+            </div>
+            <span class="ml-4 text-sm text-gray-700">Join 5,000+ members</span>
+        </div>
+        <div class="flex items-center">
+            <div class="flex items-center text-yellow-500">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+            </div>
+            <span class="ml-2 text-sm text-gray-700">4.8/5 ratings</span>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Content Categories -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Explore Content Categories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover a wide range of content tailored for academia and
+                    industry professionals. Stay updated with the latest trends and opportunities.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="ri-article-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Tech Blogs</h3>
+                    <p class="text-gray-600 text-sm mb-4">Insightful articles and opinions from students and educators.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary text-sm font-medium">238 posts</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">12 new</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="ri-book-read-line ri-xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Research Papers</h3>
+                    <p class="text-gray-600 text-sm mb-4">Academic publications and breakthrough discoveries.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary text-sm font-medium">156 papers</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">8 new</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-amber-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="ri-newspaper-line ri-xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Industry News</h3>
+                    <p class="text-gray-600 text-sm mb-4">Latest developments and trends in technology.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary text-sm font-medium">412 articles</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">24 new</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="ri-code-box-line ri-xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Hackathons</h3>
+                    <p class="text-gray-600 text-sm mb-4">Upcoming coding competitions and challenges.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary text-sm font-medium">47 events</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">5 new</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg mb-4 flex items-center justify-center">
+                        <i class="ri-briefcase-line ri-xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Job Openings</h3>
+                    <p class="text-gray-600 text-sm mb-4">Career opportunities for students and professionals.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary text-sm font-medium">183 listings</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">18 new</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Content Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Featured Content</h2>
+                <div class="bg-white rounded-full p-1 shadow-sm border border-gray-200 flex">
+                    <button
+                        class="px-4 py-2 text-sm font-medium bg-primary text-white rounded-full whitespace-nowrap">All</button>
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary whitespace-nowrap">Blogs</button>
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary whitespace-nowrap">Research</button>
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary whitespace-nowrap">News</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=advanced%20AI%20neural%20network%20visualization%20with%20glowing%20nodes%20and%20connections%2C%20professional%20tech%20illustration%2C%20clean%20background%2C%20high%20quality%20detailed%20render&width=600&height=400&seq=123461&orientation=landscape"
+                            alt="AI Research" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Research</span>
+                            <span class="ml-2 text-xs text-gray-500">April 10, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Advancements in Neural Network Architecture for
+                            Natural Language Processing</h3>
+                        <p class="text-gray-600 text-sm mb-4">A comprehensive study on the latest developments in
+                            transformer models and their applications in understanding complex language patterns.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20asian%20man%20with%20glasses%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123462&orientation=squarish"
+                                    alt="Author" class="w-8 h-8 rounded-full mr-2">
+                                <span class="text-sm text-gray-700">Dr. James Chen</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-gray-500 text-sm">
+                                <div class="flex items-center">
+                                    <i class="ri-eye-line mr-1"></i>
+                                    <span>2.4k</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-1"></i>
+                                    <span>187</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-1"></i>
+                                    <span>34</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20quantum%20computing%20hardware%20in%20a%20high-tech%20laboratory%20environment%2C%20professional%20tech%20illustration%2C%20clean%20background%2C%20high%20quality%20detailed%20render&width=600&height=400&seq=123463&orientation=landscape"
+                            alt="Quantum Computing" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Tech News</span>
+                            <span class="ml-2 text-xs text-gray-500">April 8, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Quantum Computing Breakthrough: 1000-Qubit
+                            Processor Unveiled</h3>
+                        <p class="text-gray-600 text-sm mb-4">A major tech company has announced a significant leap in
+                            quantum computing technology, potentially revolutionizing cryptography and complex
+                            simulations.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20caucasian%20woman%20with%20red%20hair%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123464&orientation=squarish"
+                                    alt="Author" class="w-8 h-8 rounded-full mr-2">
+                                <span class="text-sm text-gray-700">Sarah Johnson</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-gray-500 text-sm">
+                                <div class="flex items-center">
+                                    <i class="ri-eye-line mr-1"></i>
+                                    <span>3.8k</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-1"></i>
+                                    <span>245</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-1"></i>
+                                    <span>56</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=diverse%20students%20collaborating%20on%20a%20tech%20project%20with%20laptops%20and%20digital%20screens%2C%20modern%20classroom%20setting%2C%20professional%20education%20illustration%2C%20clean%20background%2C%20high%20quality%20detailed%20render&width=600&height=400&seq=123465&orientation=landscape"
+                            alt="Education Tech" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Blog</span>
+                            <span class="ml-2 text-xs text-gray-500">April 11, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">The Future of Education: Blending AI with
+                            Traditional Teaching Methods</h3>
+                        <p class="text-gray-600 text-sm mb-4">Exploring how artificial intelligence can enhance
+                            classroom experiences while preserving the irreplaceable human element of education.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20african%20american%20woman%20with%20natural%20hair%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123466&orientation=squarish"
+                                    alt="Author" class="w-8 h-8 rounded-full mr-2">
+                                <span class="text-sm text-gray-700">Prof. Michelle Carter</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-gray-500 text-sm">
+                                <div class="flex items-center">
+                                    <i class="ri-eye-line mr-1"></i>
+                                    <span>1.9k</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-heart-line mr-1"></i>
+                                    <span>163</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="ri-chat-1-line mr-1"></i>
+                                    <span>42</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <button
+                    class="px-6 py-3 bg-white text-primary border border-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-50 transition">View
+                    All Featured Content</button>
+            </div>
+        </div>
+    </section>
+    <!-- Content Creation Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Share Your Knowledge</h2>
+                    <p class="text-gray-600">Contribute to the community by sharing your expertise, research findings,
+                        or industry insights.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-5 rounded-lg shadow-sm text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="ri-edit-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Write a Blog</h3>
+                        <p class="text-gray-600 text-sm">Share your thoughts and experiences with the community.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg shadow-sm text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="ri-file-paper-2-line ri-lg text-purple-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Publish Research</h3>
+                        <p class="text-gray-600 text-sm">Upload your academic papers and research findings.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg shadow-sm text-center">
+                        <div class="w-12 h-12 bg-amber-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="ri-megaphone-line ri-lg text-amber-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Post Opportunity</h3>
+                        <p class="text-gray-600 text-sm">Announce hackathons, job openings, or events.</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button
+                        class="px-8 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition flex items-center mx-auto">
+                        <i class="ri-add-line mr-2"></i>
+                        Create New Post
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Upcoming Events Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Upcoming Hackathons & Events</h2>
+                <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                    View All
+                    <i class="ri-arrow-right-line ml-1"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-40 overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white">
+                        <div class="flex justify-between">
+                            <div>
+                                <span
+                                    class="text-xs font-medium bg-white bg-opacity-20 px-3 py-1 rounded-full">Hackathon</span>
+                                <h3 class="text-xl font-bold mt-4">Global AI Challenge</h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-medium">April</span>
+                                <div class="text-3xl font-bold">25</div>
+                                <span class="text-sm">2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-600 text-sm mb-4">
+                            <div class="flex items-center mr-4">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                <span>Virtual & Boston, MA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>48 Hours</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Solve real-world problems using artificial intelligence
+                            and machine learning. $50,000 in prizes.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20diverse%20man%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123467&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20asian%20woman%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123468&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20caucasian%20man%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123469&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">
+                                    +42</div>
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Register</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-40 overflow-hidden bg-gradient-to-r from-green-500 to-teal-600 p-6 text-white">
+                        <div class="flex justify-between">
+                            <div>
+                                <span
+                                    class="text-xs font-medium bg-white bg-opacity-20 px-3 py-1 rounded-full">Workshop</span>
+                                <h3 class="text-xl font-bold mt-4">Sustainable Tech Summit</h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-medium">May</span>
+                                <div class="text-3xl font-bold">12</div>
+                                <span class="text-sm">2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-600 text-sm mb-4">
+                            <div class="flex items-center mr-4">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                <span>San Francisco, CA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>2 Days</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Explore how technology can address climate change and
+                            environmental challenges. Featuring industry leaders.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20woman%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123470&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20an%20older%20man%20with%20glasses%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123471&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20african%20american%20woman%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123472&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">
+                                    +28</div>
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Register</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-40 overflow-hidden bg-gradient-to-r from-amber-500 to-orange-600 p-6 text-white">
+                        <div class="flex justify-between">
+                            <div>
+                                <span
+                                    class="text-xs font-medium bg-white bg-opacity-20 px-3 py-1 rounded-full">Conference</span>
+                                <h3 class="text-xl font-bold mt-4">EdTech Innovation Forum</h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-medium">June</span>
+                                <div class="text-3xl font-bold">8</div>
+                                <span class="text-sm">2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-gray-600 text-sm mb-4">
+                            <div class="flex items-center mr-4">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                <span>Chicago, IL</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-time-line mr-1"></i>
+                                <span>3 Days</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Connect with educators and technologists to shape the
+                            future of learning. Workshops, panels, and networking.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20hispanic%20man%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123473&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20asian%20woman%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123474&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20african%20american%20man%2C%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=50&height=50&seq=123475&orientation=squarish"
+                                    alt="Participant" class="w-8 h-8 rounded-full border-2 border-white">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">
+                                    +35</div>
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Job Opportunities Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Latest Job Opportunities</h2>
+                <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                    View All
+                    <i class="ri-arrow-right-line ml-1"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div
+                    class="bg-white rounded-lg p-6 border border-gray-100 hover:shadow-md transition flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="ri-google-fill ri-lg text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Machine Learning Engineer</h3>
+                            <div class="flex flex-wrap items-center text-sm text-gray-600 mt-1">
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-building-line mr-1"></i>
+                                    Google
+                                </span>
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-map-pin-line mr-1"></i>
+                                    Mountain View, CA (Hybrid)
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="ri-money-dollar-circle-line mr-1"></i>
+                                    $140K - $180K
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full mr-4">New</span>
+                        <button
+                            class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg p-6 border border-gray-100 hover:shadow-md transition flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="ri-microsoft-fill ri-lg text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Cloud Solutions Architect</h3>
+                            <div class="flex flex-wrap items-center text-sm text-gray-600 mt-1">
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-building-line mr-1"></i>
+                                    Microsoft
+                                </span>
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-map-pin-line mr-1"></i>
+                                    Remote (US)
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="ri-money-dollar-circle-line mr-1"></i>
+                                    $125K - $165K
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full mr-4">New</span>
+                        <button
+                            class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg p-6 border border-gray-100 hover:shadow-md transition flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="ri-apple-fill ri-lg text-gray-800"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">iOS Developer (AR/VR)</h3>
+                            <div class="flex flex-wrap items-center text-sm text-gray-600 mt-1">
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-building-line mr-1"></i>
+                                    Apple
+                                </span>
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-map-pin-line mr-1"></i>
+                                    Cupertino, CA
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="ri-money-dollar-circle-line mr-1"></i>
+                                    $130K - $170K
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <button
+                            class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-lg p-6 border border-gray-100 hover:shadow-md transition flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="ri-stanford-fill ri-lg text-red-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Assistant Professor - Computer Science</h3>
+                            <div class="flex flex-wrap items-center text-sm text-gray-600 mt-1">
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-building-line mr-1"></i>
+                                    Stanford University
+                                </span>
+                                <span class="flex items-center mr-4">
+                                    <i class="ri-map-pin-line mr-1"></i>
+                                    Stanford, CA
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="ri-money-dollar-circle-line mr-1"></i>
+                                    Competitive
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full mr-4">New</span>
+                        <button
+                            class="px-4 py-2 bg-primary text-white text-sm font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Apply
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <button
+                    class="px-6 py-3 bg-white text-primary border border-primary font-medium !rounded-button whitespace-nowrap hover:bg-gray-50 transition">Browse
+                    All Job Openings</button>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Stay Updated with TechEduHub</h2>
+                <p class="text-indigo-100 mb-8">Get the latest tech news, research breakthroughs, and career
+                    opportunities delivered to your inbox.</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Enter your email address"
+                        class="flex-grow px-4 py-3 rounded-lg border-none text-gray-900 focus:ring-2 focus:ring-white focus:outline-none">
+                    <button
+                        class="bg-white text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-opacity-90 transition">Subscribe</button>
+                </div>
+                <p class="text-xs text-indigo-200 mt-4">By subscribing, you agree to our Privacy Policy and consent to
+                    receive updates from TechEduHub.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">TechEduHub</a>
+                    <p class="text-gray-400 text-sm mb-4">Bridging the gap between academia and industry through
+                        knowledge sharing and collaboration.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blogs</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tech News</a></li>
+                        <li><a href="#" class="hover:text-white transition">Research & Development</a></li>
+                        <li><a href="#" class="hover:text-white transition">Hackathons</a></li>
+                        <li><a href="#" class="hover:text-white transition">Job Openings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition">Community Guidelines</a></li>
+                        <li><a href="#" class="hover:text-white transition">Academic Resources</a></li>
+                        <li><a href="#" class="hover:text-white transition">Career Development</a></li>
+                        <li><a href="#" class="hover:text-white transition">For Educators</a></li>
+                        <li><a href="#" class="hover:text-white transition">For Students</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line mt-1 mr-2"></i>
+                            <span>123 Innovation Way, Tech Valley, CA 94103, USA</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-2"></i>
+                            <span>contact@techeduhub.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-2"></i>
+                            <span>+1 (555) 987-6543</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 TechEduHub. All rights reserved.</p>
+                <div class="flex space-x-6 text-gray-500 text-sm">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        gsap.from(".container", {
+    duration: 1,
+    y: -30,
+    opacity: 0,
+    ease: "power2.out",
+    stagger: 0.2
+  });
+        document.addEventListener("DOMContentLoaded", function () {
+            // Custom checkbox functionality
+            const checkboxes = document.querySelectorAll(".custom-checkbox");
+            checkboxes.forEach((checkbox) => {
+                checkbox.addEventListener("click", function () {
+                    this.classList.toggle("checked");
+                    const input = this.nextElementSibling;
+                    if (input && input.type === "checkbox") {
+                        input.checked = !input.checked;
+                    }
+                });
+            });
+
+            // Event registration modal functionality
+            const registerButtons = document.querySelectorAll(
+                'button:not(#modalClose):contains("Register")',
+            );
+            const modal = document.getElementById("registrationModal");
+            const modalClose = document.getElementById("modalClose");
+            const modalOverlay = document.getElementById("modalOverlay");
+            const registrationForm = document.getElementById("registrationForm");
+
+            registerButtons.forEach((button) => {
+                button.addEventListener("click", function (e) {
+                    const eventCard = e.target.closest(".rounded-lg");
+                    const eventName = eventCard.querySelector("h3").textContent;
+                    const eventDate =
+                        eventCard.querySelector(".text-3xl").textContent +
+                        " " +
+                        eventCard.querySelector(".text-sm:first-child").textContent +
+                        " " +
+                        eventCard.querySelector(".text-sm:last-child").textContent;
+                    const eventLocation = eventCard
+                        .querySelector(".ri-map-pin-line")
+                        .nextSibling.textContent.trim();
+                    const eventType = eventCard.querySelector(
+                        ".bg-white.bg-opacity-20",
+                    ).textContent;
+
+                    document.getElementById("modalEventName").textContent = eventName;
+                    document.getElementById("modalEventDate").textContent = eventDate;
+                    document.getElementById("modalEventLocation").textContent = eventLocation;
+
+                    // Set event-specific details
+                    if (eventType === "Hackathon") {
+                        document.getElementById("eventSpecificDetails").innerHTML = `
+<div class="mb-4">
+<h4 class="font-semibold text-lg mb-2">Prize Pool</h4>
+<p class="text-gray-600">Total prize pool: $50,000</p>
+<ul class="list-disc list-inside text-gray-600 ml-4">
+<li>First Place: $25,000</li>
+<li>Second Place: $15,000</li>
+<li>Third Place: $10,000</li>
+</ul>
+</div>`;
+                    } else if (eventType === "Conference") {
+                        document.getElementById("eventSpecificDetails").innerHTML = `
+<div class="mb-4">
+<h4 class="font-semibold text-lg mb-2">Featured Speakers</h4>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20middle-aged%20tech%20executive&width=40&height=40&seq=123476&orientation=squarish" class="w-8 h-8 rounded-full mr-2">
+<div>
+<div class="font-medium">Dr. Sarah Chen</div>
+<div class="text-sm">AI Research Director, Google</div>
+</div>
+</li>
+<li class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20senior%20tech%20leader&width=40&height=40&seq=123477&orientation=squarish" class="w-8 h-8 rounded-full mr-2">
+<div>
+<div class="font-medium">James Wilson</div>
+<div class="text-sm">CTO, Microsoft</div>
+</div>
+</li>
+</ul>
+</div>`;
+                    }
+
+                    modal.classList.remove("hidden");
+                });
+            });
+
+            modalClose.addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+
+            modalOverlay.addEventListener("click", (e) => {
+                if (e.target === modalOverlay) {
+                    modal.classList.add("hidden");
+                }
+            });
+
+            registrationForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const formData = new FormData(registrationForm);
+                const submitButton = registrationForm.querySelector(
+                    'button[type="submit"]',
+                );
+                submitButton.disabled = true;
+                submitButton.innerHTML =
+                    '<i class="ri-loader-4-line animate-spin"></i> Processing...';
+
+                setTimeout(() => {
+                    const successMessage = document.createElement("div");
+                    successMessage.className =
+                        "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg";
+                    successMessage.innerHTML = `
+<div class="flex items-center">
+<i class="ri-checkbox-circle-line mr-2"></i>
+Registration successful! Check your email for confirmation.
+</div>
+`;
+                    document.body.appendChild(successMessage);
+
+                    modal.classList.add("hidden");
+                    registrationForm.reset();
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = "Confirm Registration";
+
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                }, 1500);
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mobile menu toggle
+            const menuButton = document.querySelector("button.md\\:hidden");
+            if (menuButton) {
+                menuButton.addEventListener("click", function () {
+                    const nav = document.querySelector("nav.hidden");
+                    if (nav) {
+                        nav.classList.toggle("hidden");
+                        nav.classList.toggle("flex");
+                        nav.classList.toggle("flex-col");
+                        nav.classList.toggle("absolute");
+                        nav.classList.toggle("top-16");
+                        nav.classList.toggle("left-0");
+                        nav.classList.toggle("w-full");
+                        nav.classList.toggle("bg-white");
+                        nav.classList.toggle("p-4");
+                        nav.classList.toggle("shadow-md");
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="hidden fixed inset-0 z-50">
+        <div id="modalOverlay" class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-gray-900">Event Registration</h2>
+                        <button id="modalClose" class="text-gray-400 hover:text-gray-500">
+                            <i class="ri-close-line ri-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <h3 id="modalEventName" class="text-xl font-semibold text-gray-900 mb-2"></h3>
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i class="ri-calendar-line mr-1"></i>
+                                <span id="modalEventDate"></span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-map-pin-line mr-1"></i>
+                                <span id="modalEventLocation"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eventSpecificDetails" class="mb-6"></div>
+
+                    <form id="registrationForm" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    placeholder="Enter your full name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Organization</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    placeholder="Enter your organization">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    placeholder="Enter your role">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Attendance Type</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center">
+                                    <input type="radio" name="attendance" value="virtual" class="mr-2">
+                                    <span>Virtual</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="attendance" value="in-person" class="mr-2">
+                                    <span>In-person</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h4 class="font-medium text-gray-900 mb-2">Registration Fee</h4>
+                            <div class="flex items-center justify-between text-sm">
+                                <span>Early Bird Registration</span>
+                                <span class="font-medium">$99</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">* Virtual attendance fee is $49</div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input type="checkbox" required class="h-4 w-4 text-primary border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label class="font-medium text-gray-700">Terms and Conditions</label>
+                                <p class="text-gray-500">I agree to the event terms and conditions, including the
+                                    cancellation policy.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-b-lg flex justify-end gap-4">
+                    <button type="button"
+                        class="px-4 py-2 text-gray-700 border border-gray-300 !rounded-button hover:bg-gray-50"
+                        onclick="document.getElementById('registrationModal').classList.add('hidden')">Cancel</button>
+                    <button type="submit" form="registrationForm"
+                        class="px-4 py-2 bg-primary text-white !rounded-button hover:bg-opacity-90">Confirm
+                        Registration</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

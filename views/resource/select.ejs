@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Document</title>
+</head>
+<body>
+  <h2>Select Your Resource</h2>
+  <form action="/view-docs" method="POST">
+    <label for="year">Year:</label>
+    <select id="year" name="year" required>
+      <option value="">Select Year</option>
+      <% years.forEach(y => { %>
+        <option value="<%= y._id %>"><%= y.name %></option>
+      <% }) %>
+    </select><br><br>
+
+    <label for="department">Department:</label>
+    <select id="department" name="department" required>
+      <option value="">Select Department</option>
+    </select><br><br>
+
+    <label for="branch">Branch:</label>
+    <select id="branch" name="branch" required>
+      <option value="">Select Branch</option>
+    </select><br><br>
+
+    <label for="subject">Subject:</label>
+    <select id="subject" name="subject" required>
+      <option value="">Select Subject</option>
+    </select><br><br>
+
+    <button type="submit">View Docs</button>
+  </form>
+
+  <script>
+    const yearSelect = document.getElementById('year');
+    const departmentSelect = document.getElementById('department');
+    const branchSelect = document.getElementById('branch');
+    const subjectSelect = document.getElementById('subject');
+
+    yearSelect.addEventListener('change', async () => {
+      const yearId = yearSelect.value;
+      const res = await fetch(`/departments/${yearId}`);
+      const departments = await res.json();
+      departmentSelect.innerHTML = '<option value="">Select Department</option>';
+      branchSelect.innerHTML = '<option value="">Select Branch</option>';
+      subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+      departments.forEach(dep => {
+        departmentSelect.innerHTML += `<option value="${dep._id}">${dep.name}</option>`;
+      });
+    });
+
+    departmentSelect.addEventListener('change', async () => {
+      const yearId = yearSelect.value;
+      const depId = departmentSelect.value;
+      const res = await fetch(`/branches/${yearId}/${depId}`);
+      const branches = await res.json();
+      branchSelect.innerHTML = '<option value="">Select Branch</option>';
+      subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+      branches.forEach(branch => {
+        branchSelect.innerHTML += `<option value="${branch._id}">${branch.name}</option>`;
+      });
+    });
+
+    branchSelect.addEventListener('change', async () => {
+      const yearId = yearSelect.value;
+      const depId = departmentSelect.value;
+      const branchId = branchSelect.value;
+      const res = await fetch(`/subjects/${yearId}/${depId}/${branchId}`);
+      const subjects = await res.json();
+      subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+      subjects.forEach(subject => {
+        subjectSelect.innerHTML += `<option value="${subject._id}">${subject.name}</option>`;
+      });
+    });
+  </script>
+</body>
+</html>

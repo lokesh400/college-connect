@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Resources</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#4F46E5", secondary: "#6366F1" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+  />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+    }
+    .card {
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    }
+    .filter-btn.active {
+      background-color: #4F46E5;
+      color: white;
+    }
+    .loading-spinner {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Header Section -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+      <div>
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">All Resources</h1>
+        <p class="text-gray-600">Browse and download educational materials</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+        <!-- Search Input -->
+        <div class="relative flex-grow">
+          <input
+            type="text"
+            placeholder="Search resources..."
+            class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:border-primary transition-all"
+          />
+          <i class="ri-search-line absolute left-3 top-2.5 text-gray-400"></i>
+        </div>
+
+        <!-- Upload Button -->
+        <a
+          href="/upload"
+          class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-button flex items-center justify-center gap-2 hover:shadow-lg transition-all whitespace-nowrap"
+        >
+          <i class="ri-upload-line"></i>
+          <span>Upload New</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-all active">
+        All
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-all">
+        Notes
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-all">
+        Question Papers
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-all">
+        Books
+      </button>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resources-container">
+      <% if (resources.length === 0) { %>
+        <div class="col-span-full text-center py-12">
+          <i class="ri-file-search-line text-4xl text-gray-300 mb-4"></i>
+          <h3 class="text-xl font-medium text-gray-700">No resources found</h3>
+          <p class="text-gray-500">Be the first to upload a resource!</p>
+        </div>
+      <% } %>
+
+      <% resources.forEach(r => { %>
+        <div class="card bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col h-full">
+          <div class="flex justify-between items-start mb-3">
+            <span class="px-3 py-1 bg-blue-50 text-primary text-xs font-medium rounded-full">
+              <%= r.type || 'Resource' %>
+            </span>
+            <span class="text-xs text-gray-500">
+              <%= new Date(r.createdAt).toLocaleDateString() %>
+            </span>
+          </div>
+          
+          <h3 class="text-xl font-semibold mb-2 text-gray-900"><%= r.title %></h3>
+          
+          <% if (r.subject || r.branch || r.year) { %>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <% if (r.subject) { %>
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                  <%= r.subject %>
+                </span>
+              <% } %>
+              <% if (r.branch) { %>
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                  <%= r.branch %>
+                </span>
+              <% } %>
+              <% if (r.year) { %>
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                  Year <%= r.year %>
+                </span>
+              <% } %>
+            </div>
+          <% } %>
+          
+          <% if (r.description) { %>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3"><%= r.description %></p>
+          <% } %>
+          
+          <div class="mt-auto">
+            <a 
+              href="<%= r.zenodoLink %>" 
+              target="_blank" 
+              class="w-full bg-primary bg-opacity-10 text-primary hover:bg-opacity-20 px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-all"
+            >
+              <i class="ri-download-line"></i>
+              <span>Download PDF</span>
+            </a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script>
+    // Simple search functionality
+    document.querySelector('.search-input').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+        const tags = Array.from(card.querySelectorAll('.bg-gray-100')).map(tag => tag.textContent.toLowerCase());
+        
+        const matches = title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        tags.some(tag => tag.includes(searchTerm));
+        
+        card.style.display = matches ? 'flex' : 'none';
+      });
+    });
+
+    // Filter buttons functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filter = this.textContent.trim();
+        const cards = document.querySelectorAll('.card');
+        
+        if (filter === 'All') {
+          cards.forEach(card => card.style.display = 'flex');
+          return;
+        }
+        
+        cards.forEach(card => {
+          const type = card.querySelector('.bg-blue-50').textContent.trim();
+          card.style.display = type === filter ? 'flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

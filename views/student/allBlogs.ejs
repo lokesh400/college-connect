@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Insights</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#3b82f6', secondary: '#64748b' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+            display: none;
+        }
+
+        input[type="search"] {
+            -webkit-appearance: none;
+        }
+
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-pill {
+            transition: background-color 0.2s ease;
+        }
+
+        .category-pill:hover {
+            background-color: #e0e7ff;
+        }
+
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.switch-slider {
+            background-color: #3b82f6;
+        }
+
+        input:checked+.switch-slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#" class="text-primary font-medium border-b-2 border-primary">Blog</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">About</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="search" placeholder="Search blogs..."
+                        class="w-40 md:w-64 pl-10 pr-4 py-2 text-sm border-none rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/20">
+                    <div
+                        class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+
+                <button class="p-2 rounded-full hover:bg-gray-100 transition-colors md:hidden">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-menu-line text-gray-700"></i>
+                    </div>
+                </button>
+
+                <button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 whitespace-nowrap" >
+                    <a href="/add/new/blog">Add New Blog</a>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+        <section class="w-full md:w-3/4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Latest Articles</h1>
+                    <p class="text-gray-600 mt-2">Discover insights and knowledge from our expert writers</p>
+                </div>
+
+                <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="categoryDropdown"
+                            class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-button text-gray-700 bg-white hover:bg-gray-50 transition-colors whitespace-nowrap">
+                            <span>All Categories</span>
+                            <div class="w-4 h-4 flex items-center justify-center">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                        <div id="categoryMenu"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded shadow-lg z-10 py-1">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Categories</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Technology</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Business</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Design</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Marketing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Lifestyle</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">Grid</span>
+                        <label class="custom-switch">
+                            <input type="checkbox" id="viewToggle">
+                            <span class="switch-slider"></span>
+                        </label>
+                        <span class="text-sm text-gray-600">List</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <% for(let i=0; i<blogs.length; i++) {%>
+                    <article class="blog-card bg-white rounded shadow-sm overflow-hidden">
+                    <a href="/show/this/blog/<%= blogs[i].id %>" class="block">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20office%20workspace%20with%20laptop%2C%20coffee%20cup%2C%20and%20notebook%20on%20a%20wooden%20desk%20with%20natural%20light%20streaming%20through%20windows%2C%20professional%20minimalist%20setup&width=600&height=400&seq=1&orientation=landscape"
+                            alt="The Future of Remote Work" class="w-full h-48 object-cover object-top">
+                        <div class="p-5">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Technology</span>
+                                <span class="text-xs text-gray-500">5 min read</span>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-2"><%= blogs[i].title %></h2>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2"></p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20woman%20with%20short%20dark%20hair%2C%20neutral%20background%2C%20business%20casual%20attire%2C%20friendly%20smile&width=100&height=100&seq=2&orientation=squarish"
+                                        alt="Emily Richardson" class="w-8 h-8 rounded-full object-cover">
+                                    <span class="text-sm font-medium text-gray-700"><%= blogs[i].author.name %></span>
+                                    <div>
+                                    <span class="text-xs text-gray-500"><%= blogs[i].createdAt %></span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <%}%>
+
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 block">logo</a>
+                    <p class="text-gray-400 text-sm mb-4">Delivering insightful content to help professionals stay ahead
+                        in a rapidly evolving world.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-twitter-x-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-facebook-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-instagram-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-linkedin-fill"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Business</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Marketing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI & Data</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Leadership</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Advertise</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press Kit</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2025 logo. All rights reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <div class="w-8 h-5 flex items-center justify-center">
+                        <i class="ri-visa-fill text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center">
+                        <i class="ri-mastercard-fill text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center">
+                        <i class="ri-paypal-fill text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center">
+                        <i class="ri-apple-fill text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top fixed bottom-6 right-6 p-3 bg-primary text-white rounded-full shadow-lg">
+        <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-arrow-up-line"></i>
+        </div>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopButton = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const viewToggle = document.getElementById('viewToggle');
+            const blogGrid = document.querySelector('.grid');
+
+            viewToggle.addEventListener('change', function () {
+                if (this.checked) {
+                    blogGrid.classList.remove('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
+                    blogGrid.classList.add('grid-cols-1');
+
+                    const blogCards = document.querySelectorAll('.blog-card');
+                    blogCards.forEach(card => {
+                        const imgContainer = card.querySelector('img').parentElement;
+                        const contentContainer = card.querySelector('.p-5').parentElement;
+
+                        imgContainer.classList.add('flex');
+                        contentContainer.classList.add('flex');
+                        card.classList.add('flex');
+
+                        const img = card.querySelector('img');
+                        img.classList.remove('w-full', 'h-48');
+                        img.classList.add('w-1/3', 'h-auto');
+
+                        const content = card.querySelector('.p-5');
+                        content.classList.add('w-2/3');
+                    });
+                } else {
+                    blogGrid.classList.remove('grid-cols-1');
+                    blogGrid.classList.add('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
+
+                    const blogCards = document.querySelectorAll('.blog-card');
+                    blogCards.forEach(card => {
+                        const imgContainer = card.querySelector('img').parentElement;
+                        const contentContainer = card.querySelector('.p-5').parentElement;
+
+                        imgContainer.classList.remove('flex');
+                        contentContainer.classList.remove('flex');
+                        card.classList.remove('flex');
+
+                        const img = card.querySelector('img');
+                        img.classList.remove('w-1/3', 'h-auto');
+                        img.classList.add('w-full', 'h-48');
+
+                        const content = card.querySelector('.p-5');
+                        content.classList.remove('w-2/3');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

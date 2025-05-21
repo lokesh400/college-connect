@@ -1,56 +1,69 @@
-<!-- Header Section -->
-<div class="container mx-auto px-6 py-6 flex items-center justify-between animate__animated animate__fadeInDown">
-  <!-- Logo + Nav -->
-  <div class="flex items-center space-x-12">
-    <a href="#" class="text-3xl font-pacifico text-primary tracking-wide hover:scale-105 transition-transform duration-300">TechEduHub</a>
-    <nav class="hidden md:flex space-x-6 text-sm font-medium">
-      <a href="/" class="text-gray-800 hover:text-primary transition-colors">Home</a>
-      <a href="/show/all/blogs" class="text-gray-600 hover:text-primary transition-colors">Blogs</a>
-      <a href="#" class="text-gray-600 hover:text-primary transition-colors">Tech News</a>
-      <a href="#" class="text-gray-600 hover:text-primary transition-colors">R&D</a>
-      <a href="/all/posts" class="text-gray-600 hover:text-primary transition-colors">Opportunities</a>
-      <a href="/competitions" class="text-gray-600 hover:text-primary transition-colors">Competition</a>
-      <a href="/view/docs" class="text-gray-600 hover:text-primary transition-colors" >Preyious Year</a>
-    </nav>
-  </div>
-
-  <!-- Right Actions -->
-  <div class="flex items-center space-x-4">
-    <!-- Notification -->
-    <div class="relative w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-      <i class="ri-notification-3-line ri-xl text-gray-700"></i>
-      <span class="absolute top-1 right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-md">3</span>
+<header class="bg-white shadow-md">
+  <div class="container mx-auto px-6 py-6 flex items-center justify-between animate__animated animate__fadeInDown">
+    <!-- Logo + Nav -->
+    <div class="flex items-center space-x-12">
+      <a href="#" class="text-3xl font-pacifico text-primary tracking-wide hover:scale-105 transition-transform duration-300">TechEduHub</a>
+      <nav id="nav-menu" class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="/" class="text-gray-800 hover:text-primary transition-colors">Home</a>
+        <a href="/show/all/blogs" class="text-gray-600 hover:text-primary transition-colors">Blogs</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">Tech News</a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors">R&D</a>
+        <a href="/all/posts" class="text-gray-600 hover:text-primary transition-colors">Opportunities</a>
+        <a href="/competitions" class="text-gray-600 hover:text-primary transition-colors">Competition</a>
+        <a href="/view/docs" class="text-gray-600 hover:text-primary transition-colors">Previous Year</a>
+      </nav>
     </div>
 
-    <% if(currUser){ %>
-      <a href="/user/my-dash">
-       <div class="flex items-center space-x-2 cursor-pointer hover:scale-105 transition-transform">
-      <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shadow-sm">
-        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20diverse%20academic%20person%20with%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=123457&orientation=squarish"
-          alt="Profile" class="w-full h-full object-cover">
-      </div>
-      <span class="hidden md:inline text-sm font-semibold text-gray-700">Alex Morgan</span>
+    <!-- Right Actions -->
+    <div class="flex items-center space-x-4">
+      <% if (currUser) { %>
+        <a href="/user/my-dash" class="flex items-center space-x-2 cursor-pointer hover:scale-105 transition-transform">
+          <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shadow-sm">
+            <img
+              src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20diverse%20academic%20person%20with%20neutral%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=123457&orientation=squarish"
+              alt="Profile" class="w-full h-full object-cover" />
+          </div>
+        </a>
+        <a href="/user/logout">
+          <button class="rounded bg-blue-700 text-white px-4 py-2 hover:bg-blue-800 transition-colors duration-300">LogOut</button>
+        </a>
+      <% } else { %>
+        <a href="/user/login">
+          <button class="rounded bg-blue-700 text-white px-4 py-2 hover:bg-blue-800 transition-colors duration-300">Login</button>
+        </a>
+      <% } %>
+
+      <!-- Mobile Menu Icon -->
+      <button id="mobile-menu-button" onclick="toggle()"
+        class="md:hidden w-10 h-10 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary rounded">
+        <i class="ri-menu-line ri-xl text-gray-700"></i>
+      </button>
     </div>
-      </a>
-    <%} else{ %>
-      <button class="rounded bg-blue-700" >Login</button>
-     <%}%> 
-
-
-    <!-- Mobile Menu Icon -->
-    <button class="md:hidden w-10 h-10 flex items-center justify-center">
-      <i class="ri-menu-line ri-xl text-gray-700"></i>
-    </button>
   </div>
+
+  <!-- Mobile Nav Menu (hidden by default) -->
+  <nav id="mobile-nav-menu" style="display: none; flex-direction: column; gap: 2px;" >
+    <a href="/" class="block text-gray-800 hover:text-primary transition-colors ml-2">Home</a>
+    <a href="/show/all/blogs" class="block text-gray-600 hover:text-primary transition-colors ml-2">Blogs</a>
+    <a href="#" class="block text-gray-600 hover:text-primary transition-colors ml-2">Tech News</a>
+    <a href="#" class="block text-gray-600 hover:text-primary transition-colors ml-2">R&D</a>
+    <a href="/all/posts" class="block text-gray-600 hover:text-primary transition-colors ml-2">Opportunities</a>
+    <a href="/competitions" class="block text-gray-600 hover:text-primary transition-colors ml-2">Competition</a>
+    <a href="/view/docs" class="block text-gray-600 hover:text-primary transition-colors ml-2">Previous Year</a>
+  </nav>
 </div>
+</header>
 
-<!-- Search Section -->
-<div class="container mx-auto px-6 pb-6 animate__animated animate__fadeInUp">
-  <div class="relative">
-    <input type="search" placeholder="Search for blogs, research papers, hackathons..."
-      class="w-full py-3 pl-12 pr-4 text-sm bg-gray-100 rounded-full border border-gray-200 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-300 placeholder:text-gray-500">
-    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-      <i class="ri-search-line text-lg"></i>
-    </div>
-  </div>
-</div>
+<script>
+
+function toggle() {
+  const menu = document.getElementById('mobile-nav-menu');
+  if (menu.style.display === 'flex') {
+    menu.style.display = 'none'; // Hide menu
+  } else {
+    menu.style.display = 'flex'; // Show menu
+  }
+}
+
+  
+</script>

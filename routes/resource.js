@@ -10,6 +10,13 @@ require('dotenv').config();
 
 const upload = multer({ dest: 'uploads/' });
 
+const {
+    isLoggedIn,
+    saveRedirectUrl,
+    isAdmin,
+    ensureAuthenticated,
+  } = require("../middlewares/login.js");
+
 // Middleware to check Zenodo token
 const checkZenodoToken = (req, res, next) => {
   if (!process.env.ZENODO_TOKEN) {
@@ -26,7 +33,7 @@ const Branch = require('../models/Branch');
 const Subject = require('../models/Subject');
 
 
-router.get('/add/details', async (req,res)=>{
+router.get('/add/details', saveRedirectUrl,isLoggedIn,isAdmin, async (req,res)=>{
   try{
       const departments = await Department.find({})
       const branches = await Branch.find({})
@@ -38,7 +45,7 @@ router.get('/add/details', async (req,res)=>{
   }
 })
 
-router.post('/add-department', async (req, res) => {
+router.post('/add-department', saveRedirectUrl,isLoggedIn,isAdmin, async (req, res) => {
   try {
     const { name } = req.body; // Get yearId and department name from the form
     const newDepartment = new Department({ name });
@@ -50,7 +57,7 @@ router.post('/add-department', async (req, res) => {
   }
 });
 
-router.post('/add-branch', async (req, res) => {
+router.post('/add-branch', saveRedirectUrl,isLoggedIn,isAdmin,async (req, res) => {
   try {
     const { year,department,name } = req.body;
     const newBranch = new Branch({ name:name,year:year,department:department });
@@ -62,7 +69,7 @@ router.post('/add-branch', async (req, res) => {
   }
 });
 
-router.post('/add-subject', async (req, res) => {
+router.post('/add-subject',saveRedirectUrl,isLoggedIn,isAdmin, async (req, res) => {
     try {
         const { year, department, branch, name, } = req.body;
         const newSubject = new Subject({

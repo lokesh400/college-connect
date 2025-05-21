@@ -30,7 +30,8 @@
           View Docs 📂
         </button>
 
-        <a href="/add/details">
+         <% if (currUser &&currUser.role==="admin" ) { %>
+          <a href="/add/details">
           <button 
     id="openModalBtn"
     type="button"
@@ -38,6 +39,8 @@
   >
     Add New
   </button>
+        <% } %>
+
       </div>
     </form>
   </div>

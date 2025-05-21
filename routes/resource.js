@@ -25,24 +25,25 @@ const Department = require('../models/Department');
 const Branch = require('../models/Branch');
 const Subject = require('../models/Subject');
 
-router.post('/add-year', async (req, res) => {
-  try {
-    const { year } = req.body; // Assuming the form sends a "year" field
-    const newYear = new Year({ year });
-    await newYear.save();
-    res.redirect('/upload'); // Redirect to the upload page after adding
-  } catch (error) {
-    console.error('Error adding year:', error);
-    res.status(500).send('Internal Server Error');
+
+router.get('/add/details', async (req,res)=>{
+  try{
+      const departments = await Department.find({})
+      const branches = await Branch.find({})
+      const years = ["1","2","3","4"];
+      res.render('resource/edit.ejs',{years,departments,branches})
+  } catch(error){
+    console.log(error)
+    res.send(error)
   }
-});
+})
 
 router.post('/add-department', async (req, res) => {
   try {
-    const { yearId, departmentName } = req.body; // Get yearId and department name from the form
-    const newDepartment = new Department({ year: yearId, name: departmentName });
+    const { name } = req.body; // Get yearId and department name from the form
+    const newDepartment = new Department({ name });
     await newDepartment.save();
-    res.redirect('/upload'); // Redirect after adding the department
+    res.redirect('/add/details'); // Redirect after adding the department
   } catch (error) {
     console.error('Error adding department:', error);
     res.status(500).send('Internal Server Error');
@@ -51,10 +52,10 @@ router.post('/add-department', async (req, res) => {
 
 router.post('/add-branch', async (req, res) => {
   try {
-    const { yearId, departmentId, branchName } = req.body;
-    const newBranch = new Branch({ year: yearId, department: departmentId, name: branchName });
+    const { year,department,name } = req.body;
+    const newBranch = new Branch({ name:name,year:year,department:department });
     await newBranch.save();
-    res.redirect('/upload');
+    res.redirect('/add/details');
   } catch (error) {
     console.error('Error adding branch:', error);
     res.status(500).send('Internal Server Error');
@@ -63,15 +64,15 @@ router.post('/add-branch', async (req, res) => {
 
 router.post('/add-subject', async (req, res) => {
     try {
-        const { yearId, departmentId, branchId, subjectName } = req.body;
+        const { year, department, branch, name, } = req.body;
         const newSubject = new Subject({
-            year: yearId,
-            department: departmentId,
-            branch: branchId,
-            subjectName
+            year,
+            department,
+            branch,
+            name,
         });
         await newSubject.save();
-        res.redirect('/upload');
+        res.redirect('/add/details');
     } catch (err) {
         console.error(err);
         res.status(500).send('Error adding subject');
@@ -82,7 +83,6 @@ router.get('/upload', async (req, res) => {
   try {
     // Fetch all the years from the database
     const years = await Year.find();
-
     // Render the page with the fetched years
     res.render('resource/upload', { years });
   } catch (error) {
@@ -92,12 +92,12 @@ router.get('/upload', async (req, res) => {
 });
 
 router.get('/departments/:yearId', async (req, res) => {
-  const departments = await Department.find({ year: req.params.yearId });
+  const departments = await Department.find();
   res.json(departments);
 });
 
 router.get('/branches/:yearId/:deptId', async (req, res) => {
-  const branches = await Branch.find({ year: req.params.yearId, department: req.params.deptId });
+  const branches = await Branch.find({ department: req.params.deptId });
   res.json(branches);
 });
 
@@ -115,42 +115,65 @@ router.get('/subjects/:yearId/:deptId/:branchId', async (req, res) => {
 //   res.redirect(`/view/docs/${year}/${department}/${branch}/${subject}`);
 // });
 
-// router.get('/view/docs', async (req, res) => {
-//   try {
-//     const resources = await Resource.find().sort({ createdAt: -1 });
-//     res.render('resource/index', { resources });
-//   } catch (err) {
-//     console.error('Error fetching resources:', err);
-//     res.status(500).render('error', { 
-//       message: 'Failed to load resources' 
-//     });
-//   }
-// });
 
-router.post('/view-docs', async (req, res) => {
-  const { year, branch, subject, department } = req.body;
-
+// select year
+router.get('/view/docs', async (req, res) => {
   try {
-    const resources = await Resource.find({ year, branch, subject, department });
-
-    res.render('resources', {
-      resources,
-      year,
-      branch,
-      subject
+    const years = await Department.find();
+    res.render('resource/select.ejs', { years });
+  } catch (err) {
+    console.error('Error fetching resources:', err);
+    res.status(500).render('error', { 
+      message: 'Failed to load resources' 
     });
+  }
+});
+
+
+//select branch
+router.post('/view-docs', async (req, res) => {
+  try {
+     const {department} = req.body;
+     const years = await Branch.find({ department: department });
+     res.render('resource/selectBranch.ejs',{department,years});
   } catch (err) {
     console.error('Error fetching resources:', err.message);
     res.status(500).render('error', { message: 'Failed to fetch documents' });
   }
 });
 
+//select year
+router.post('/view-docs/select/branch/:department', async (req,res)=>{
+  const {branch} = req.body;
+  const department = req.params.department;
+  res.render('resource/selectYear.ejs',{department,branch})
+})
+
+//select branch
+router.post('/view-docs/select/year/:department/:branch', async(req,res)=>{
+  const { year } = req.body;
+  const department = req.params.department;
+  const branch = req.params.branch;
+  const years = await Subject.find({department:department,branch:branch,year:year});
+  res.render('resource/selectSubject.ejs',{department,branch,year,years})
+})
+
+//select subject
+router.post('/view-docs/select/subject/:department/:branch/:year', async(req,res)=>{
+  const { subject } = req.body;
+  const department = req.params.department;
+  const branch = req.params.branch;
+  const year = req.params.year;
+  const resources = await Resource.find({department:department,branch:branch,year:year,subject:subject});
+  res.render('resource/index.ejs',{resources})
+})
+
 router.get('/upload', (req, res) => {
   res.render('resource/upload');
 });
 
 router.post('/upload', checkZenodoToken, upload.single('pdf'), async (req, res) => {
-  const { title, description, type, branch, year, subject } = req.body;
+  const { title, description, type, branch, year, subject,department } = req.body;
   
   if (!req.file) {
     return res.status(400).render('error', { 
@@ -232,6 +255,7 @@ router.post('/upload', checkZenodoToken, upload.single('pdf'), async (req, res) 
       type,
       branch,
       year,
+      department,
       subject,
       zenodoLink: `https://zenodo.org/record/${publishRes.data.record_id}/files/${publishRes.data.files[0].filename}?download=1`, // Make sure `fileLink` is correctly assigned
     });

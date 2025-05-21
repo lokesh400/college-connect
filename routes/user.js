@@ -31,25 +31,22 @@ router.post("/signup", async (req, res) => {
     const newUser = new User({ name, role, email, username, contactNumber });
     try {
       const registeredUser = await User.register(newUser, password);
-      const newSubscriber = new NewsLetter({ email });
-      await newSubscriber.save();
-
       const transporter = nodemailer.createTransport({
         service: "gmail",
         host: "smtp.gmail.com",
         secure: false,
         port: 587,
         auth: {
-          user: "official.keshvibe@gmail.com",
+          user: "official.thetestpulse@gmail.com",
           pass: process.env.mailpass,
         },
       });
 
       try {
         const mailOptions = await transporter.sendMail({
-          from: "official.keshvibe@gmail.com",
+          from: "official.thetestpulse@gmail.com",
           to: `${email}`,
-          subject: "Welcome to keshvibe.in",
+          subject: "Welcome to TECHSCRIBE",
           html: `
                 <!DOCTYPE html>
 <html lang="en">
@@ -149,21 +146,13 @@ router.post("/signup", async (req, res) => {
         <!-- Header -->
         <div class="header">
             <h1>Welcome to KeshVibe!</h1>
-            <p>Your journey with exclusive fashion starts here.</p>
+            <p>Your journey with TechScribe starts here.</p>
         </div>
 
         <!-- Body -->
         <div class="body">
             <h2>Hi ${name} ,</h2>
-            <p>Thank you for signing up with KeshVibe! We're thrilled to have you on board. Explore the latest trends, exclusive collections, and more, all tailored to elevate your style.</p>
-            <p>As a member, you’ll be the first to know about:</p>
-            <ul>
-                <li>New arrivals and collections</li>
-                <li>Exclusive offers and discounts</li>
-                <li>Fashion inspiration and styling tips</li>
-            </ul>
-            <p>Ready to shop? Click the button below to start your journey with KeshVibe:</p>
-            <a href="https://keshvibe.in" class="cta-button">Shop Now</a>
+            <p>Thank you for signing up with TechScribe! We're thrilled to have you on board
         </div>
 
         <!-- Footer -->
@@ -230,7 +219,7 @@ router.post("/login", saveRedirectUrl, (req, res, next) => {
         return res.redirect("/user/login");
       }
       req.flash("success_msg", "Successfully logged in!");
-      res.redirect(res.locals.RedirectUrl || "/my-dash");
+      res.redirect(res.locals.RedirectUrl || "/user/my-dash");
     });
   })(req, res, next);
 });

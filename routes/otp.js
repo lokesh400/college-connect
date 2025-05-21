@@ -35,18 +35,18 @@ router.post('/new/send-otp', async (req, res) => {
             secure: false,
             port: 587,
             auth: {
-                user: "official.keshvibe@gmail.com",
+                user: "official.thetestpulse@gmail.com",
                 pass: process.env.mailpass // Ensure this is set in your environment variables
             }
         });
         const mailOptions = {
-            from: "official.keshvibe@gmail.com",
+            from: "official.thetestpulse@gmail.com",
             to: email, // Pass the email from the request body here
-            subject: 'OTP to signup on keshvibe',
+            subject: 'OTP to signup on TECHSCRIBE',
             html: `
                 <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
                     <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        <h1 style="color: #007bff; text-align: center;">Welcome to KeshVibe!</h1>
+                        <h1 style="color: #007bff; text-align: center;">Welcome to TechScribe!</h1>
                         <p style="font-size: 16px; color: #333;">Hi there,</p>
                         <p style="font-size: 16px; color: #333;">Thank you for registering on keshvibe! We're excited to have you join our community.</p>
                         <p style="font-size: 16px; color: #333;">Here is your otp to sign
@@ -62,10 +62,7 @@ router.post('/new/send-otp', async (req, res) => {
                                 font-size: 16px;
                             ">${otp}</div>
                         </div>
-                        <p style="font-size: 16px; color: #333;">If you have any questions, feel free to reach out to us anytime at <a href="mailto:official.keshvibe@gmail.com" style="color: #007bff; text-decoration: none;">official.keshvibe@gmail.com</a>.</p>
-                        <p style="font-size: 16px; color: #333;">Cheers,<br>The KeshVibe Team</p>
-                        <hr style="border: none; border-top: 1px solid #ddd;">
-                        <p style="font-size: 12px; color: #999; text-align: center;">You received this email because you subscribed to the KeshVibe newsletter.</p>
+                        <p style="font-size: 12px; color: #999; text-align: center;">You received this email because you have signup on.</p>
                     </div>
                 </div>
             `

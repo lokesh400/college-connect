@@ -306,7 +306,7 @@
         return;
       }
       
-      if (file.size > 50 * 1024 * 1024) { // 50MB
+      if (file.size > 100000 * 1024 * 1024) { // 50MB
         fileError.textContent = 'File size exceeds 50MB limit';
         return;
       }
